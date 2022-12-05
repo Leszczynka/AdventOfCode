@@ -1,3 +1,6 @@
+from copy import deepcopy
+
+
 def process_data(filename):
     with open(filename, 'r') as fp:
         data = fp.read().split('\n\n')
@@ -14,16 +17,28 @@ def process_data(filename):
 
 
 def rearrange_stacks():
-    stacks, instructions = process_data('input.txt')
+    stacks_part1, instructions = process_data('input.txt')
+    stacks_part2 = deepcopy(stacks_part1)
+
     for instruction in instructions:
         quantity = instruction[0]
         _from = instruction[1]
         _to = instruction[2]
-        for n in range(quantity):
-            stacks[_to - 1].append(stacks[_from-1].pop())
 
-    return ''.join(stacks[i][-1] for i in range(len(stacks)))
+        for n in range(quantity):
+            stacks_part1[_to - 1].append(stacks_part1[_from - 1].pop())
+
+        stacks_part2[_to - 1].extend((stacks_part2[_from - 1])[-quantity::])
+        del stacks_part2[_from - 1][-quantity::]
+
+    crates_on_top_part1 = ''.join(stacks_part1[i][-1] for i in range(len(stacks_part1)))
+    crates_on_top_part2 = ''.join(stacks_part2[i][-1] for i in range(len(stacks_part2)))
+
+    return crates_on_top_part1, crates_on_top_part2
 
 
 if __name__ == '__main__':
-    print(f'Part One: Crates on top of stacks: {rearrange_stacks()}.')
+    part1, part2 = rearrange_stacks()
+    print(f'Part One: Crates on top of stacks: {part1}.')
+    print(f'Part Two: Crates on top of stacks: {part2}.')
+
