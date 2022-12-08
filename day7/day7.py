@@ -31,7 +31,17 @@ def calculate_total_sum_of_dirs():
     return sum(val for val in dir_sizes.values() if val <= 100000)
 
 
+def calculate_size_of_dir_to_delete():
+    dir_sizes = create_file_system()
+    unused = 70000000 - dir_sizes['/']
+    need = 30000000 - unused
+    return min(value for value in dir_sizes.values() if value >= need)
+
+
 if __name__ == '__main__':
     part1 = calculate_total_sum_of_dirs()
     print(f'Total size of directories (with a total size of at most 100000) is {part1}.')
+    part2 = calculate_size_of_dir_to_delete()
+    print(f'The smallest directory to delete is {part2} size.')
+
 
