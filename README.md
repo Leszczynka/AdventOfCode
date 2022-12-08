@@ -12,3 +12,4 @@ Here are my python solutions to the challenges in [Advent Of Code](https://adven
 | Day 4 | [Camp Cleanup](https://adventofcode.com/2022/day/4)            | [`day4.py`](/day4/day4.py) | ⭐⭐    |
 | Day 5 | [Supply Stacks](https://adventofcode.com/2022/day/5)           | [`day5.py`](/day5/day5.py) | ⭐⭐    |
 | Day 6 | [Tuning Trouble](https://adventofcode.com/2022/day/6)          | [`day6.py`](/day6/day6.py) | ⭐⭐    |
+| Day 7 | [No Space Left On Device](https://adventofcode.com/2022/day/7) | [`day7.py`](/day7/day7.py) | ⭐⭐    |
